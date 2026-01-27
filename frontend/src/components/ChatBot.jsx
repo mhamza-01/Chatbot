@@ -17,6 +17,7 @@ export default function Chatbot() {
 
     const text = input.trim();
     dispatch(addMessage({ role: "user", text }));
+    console.log(messages);
     setInput("");
 
     try {
@@ -27,6 +28,7 @@ export default function Chatbot() {
       });
 
       const data = await res.json();
+    
       dispatch(addMessage({ role: "bot", text: data.answer }));
     } catch (err) {
       dispatch(addMessage({ role: "bot", text: "Error talking to server" }));
@@ -36,6 +38,7 @@ export default function Chatbot() {
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
+     
       sendMessage();
     }
   };
@@ -128,7 +131,9 @@ export default function Chatbot() {
                         : "bg-white text-gray-800 rounded-bl-sm border border-gray-200"
                     }`}
                 >
-                  <ReactMarkdown>{msg.text}</ReactMarkdown>
+                <ReactMarkdown>
+                  {msg.text}
+                </ReactMarkdown>
                 </div>
               </div>
             ))
