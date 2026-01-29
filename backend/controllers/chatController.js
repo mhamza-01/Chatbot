@@ -68,7 +68,7 @@ export const handleChat = async (req, res) => {
     res.json({ answer });
   } catch (err) {
     console.error('❌ Chat error:', err);
-    res.status(500).json({ error: 'Failed to fetch response from Gemini' });
+    res.status(500).json({ error: 'Failed to fetch response from AI' });
   }
 };
 

@@ -12,6 +12,7 @@ export default function ChatBot() {
   const bottomRef = useRef(null);
   const dispatch = useDispatch();
   const messages = useSelector((state) => state.chat.messages);
+   
 
   const disabled = input.trim().length === 0;
 
@@ -53,6 +54,7 @@ export default function ChatBot() {
       dispatch(addMessage({ role: "bot", text: data.answer }));
     } catch (error) {
       dispatch(addMessage({ role: "bot", text: "Error: " + error.message }));
+      
     } finally {
       setLoading(false);
     }
